@@ -10,10 +10,9 @@ RUN npm install
 COPY . .
 
 RUN npx prisma generate
-CMD ["migrate.sh"]
-
 
 RUN npm run build
+
 
 CMD ["npm", "run", "start:migrate:prod"]
 

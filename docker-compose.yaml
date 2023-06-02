@@ -31,5 +31,4 @@ services:
       - db
     container_name: backend
     volumes:
-      - ./server:/usr/src/app
       - /usr/src/app/node_modules
