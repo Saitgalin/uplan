@@ -1,0 +1,35 @@
+version: "3"
+services:
+  client:
+    build: ./client
+    container_name: client
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: ./client
+        target: /client
+      - /client/node_modules
+    depends_on:
+      - backend
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=uplan
+    ports:
+      - '5432:5432'
+    container_name: db
+  backend:
+    build: ./server
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - db
+    container_name: backend
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
