@@ -12,7 +12,6 @@ import {
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { PlanService } from './plan.service';
 import { CreatePlanDto } from './dto/create-plan.dto';
-import { Plan } from '@prisma/client';
 import { AuthGuard } from '../auth/auth.guard';
 import { PlanDto } from './dto/plan.dto';
 
